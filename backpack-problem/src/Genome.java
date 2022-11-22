@@ -2,19 +2,19 @@ import java.util.Set;
 
 public class Genome {
     private Set<Integer> ids;
-    private int fitness;
-
+    private int square;
+    private double fitness;
     public Genome()
     {
-        fitness = 0;
+        square = 0;
     }
 
-    public int getFitness() {
-        return fitness;
+    public int getSquare() {
+        return square;
     }
 
-    public void setFitness(int fitness) {
-        this.fitness = fitness;
+    public void setSquare(int square) {
+        this.square = square;
     }
 
     public boolean checkUse(int id)
@@ -28,5 +28,13 @@ public class Genome {
 
     public void addIds(int id) {
         ids.add(id);
+    }
+
+    public double getFitness() {
+        return fitness;
+    }
+
+    public void setFitness(double fitness) {
+        this.fitness = fitness;
     }
 }

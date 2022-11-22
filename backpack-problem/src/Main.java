@@ -10,5 +10,11 @@ public class Main {
         {
             rectangles[i] = new Rect(random.nextInt() % lengthRect, random.nextInt() % widthRect);
         }
+        container.RandomFillPopulation(rectangles);
+
+        for(int i = 0; i < 50; ++i)
+        {
+            container.NextPopulation(rectangles);
+        }
     }
 }
