@@ -5,6 +5,11 @@ import static java.lang.System.exit;
 public class Container {
     private int length;
 
+    private int width;
+
+    public int CalcSquare(){
+        return length * width;
+    }
     public int getLength() {
         return length;
     }
@@ -12,8 +17,6 @@ public class Container {
     public int getWidth() {
         return width;
     }
-
-    private int width;
 
     private int[][] field;
 
@@ -59,7 +62,7 @@ public class Container {
         return true;
     }
 
-    public void RandomFillPopulation(Rect[] rects)
+    public void RandomFillPopulation(Rect[] rects, BestGenome bestGenome)
     {
         Random random = new Random();
         for(int i = 0; i < MAX_POP; ++i)
@@ -67,12 +70,22 @@ public class Container {
             for(int j = 0; j < rects.length; ++j) {
                 int x = random.nextInt() % width;
                 int y = random.nextInt() % length;
+
                 int id = random.nextInt() % rects.length;
                 while (population[i].checkUse(id)) id = (id + 1) % rects.length;
                 if (SetOnField(x, y, rects[id].getLength(), rects[id].getWidth())) {
+                    rects[j].setX0(x);
+                    rects[j].setY0(y);
                     population[i].addIds(id);
                     population[i].setSquare(population[i].getSquare() + rects[id].getSquare());
                 }
+            }
+            if(bestGenome.getPartOfConteiner() <= population[i].getPartOfConteiner()){
+                bestGenome.setSquare(population[i].getSquare());
+                bestGenome.setFitness(population[i].getFitness());
+                bestGenome.partOfConteiner = population[i].partOfConteiner;
+                bestGenome.setBestField(field);
+                bestGenome.setRects(rects);
             }
             GenerateField();
         }

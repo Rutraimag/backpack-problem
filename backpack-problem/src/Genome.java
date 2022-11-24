@@ -4,9 +4,20 @@ public class Genome {
     private Set<Integer> ids;
     private int square;
     private double fitness;
+
+    protected double partOfConteiner;
+
     public Genome()
     {
         square = 0;
+    }
+
+    public void setPartOfConteiner(Container container) {
+        this.partOfConteiner = container.CalcSquare() / square;
+    }
+
+    public double getPartOfConteiner() {
+        return partOfConteiner;
     }
 
     public int getSquare() {

@@ -6,11 +6,12 @@ public class Main {
         Random random = new Random();
         Container container = new Container(length, width);
         Rect[] rectangles = new Rect[sizeRect];
+        BestGenome bestGenome = new BestGenome();
         for(int i = 0; i < 50; ++i)
         {
             rectangles[i] = new Rect(random.nextInt() % lengthRect, random.nextInt() % widthRect);
         }
-        container.RandomFillPopulation(rectangles);
+        container.RandomFillPopulation(rectangles, bestGenome);
 
         for(int i = 0; i < 50; ++i)
         {
