@@ -1,4 +1,4 @@
-public class Rect {
+public class Rect implements Comparable<Rect>{
     private int length;
     private int width;
     private int square;
@@ -37,8 +37,7 @@ public class Rect {
         this.length = length;
         this.width = width;
         square = width * length;
-        count++;
-        id = count;
+        id = count++;
     }
 
     public int getId() {
@@ -47,5 +46,11 @@ public class Rect {
 
     public int getSquare() {
         return square;
+    }
+
+    @Override
+    public int compareTo(Rect obj)
+    {
+        return length == obj.length ? obj.width - width : obj.length - length;
     }
 }

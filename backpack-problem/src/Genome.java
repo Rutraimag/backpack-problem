@@ -1,15 +1,17 @@
+import java.util.ArrayList;
 import java.util.Set;
 
-public class Genome {
-    private Set<Integer> ids;
-    private int square;
-    private double fitness;
+public class Genome implements Comparable<Genome>{
+    private ArrayList<Integer> ids;
+    protected int square;
+    protected double fitness;
 
     protected double partOfConteiner;
 
     public Genome()
     {
         square = 0;
+        ids = new ArrayList<Integer>();
     }
 
     public void setPartOfConteiner(Container container) {
@@ -33,7 +35,7 @@ public class Genome {
         return ids.contains(id);
     }
 
-    public Set<Integer> getIds() {
+    public ArrayList<Integer> getIds() {
         return ids;
     }
 
@@ -47,5 +49,11 @@ public class Genome {
 
     public void setFitness(double fitness) {
         this.fitness = fitness;
+    }
+
+    @Override
+    public int compareTo(Genome obj)
+    {
+        return Integer.compare(obj.square, this.square);
     }
 }
